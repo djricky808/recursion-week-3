@@ -9,7 +9,10 @@
 
 function factorial(n) {
   // Your code here
+  return n;
 }
+
+console.log(factorial(7));
 
 // 2. Sum of an Array
 // Write a recursive function to calculate the sum of all numbers in an array.
@@ -96,5 +99,3 @@ function countOccurrences(arr, value) {
 function findMax(arr) {
   // Your code here
 }
-
-
