@@ -16,18 +16,25 @@ function factorial(n: number): number {
   }
 }
 
-console.log(factorial(7));
+// console.log(factorial(7));
 
 // 2. Sum of an Array
 // Write a recursive function to calculate the sum of all numbers in an array.
 //
 // Example Test Cases:
-// console.log(sumArray([1, 2, 3, 4])); // Output: 10
-// console.log(sumArray([])); // Output: 0
-// console.log(sumArray([5])); // Output: 5
+console.log(sumArray([1, 2, 3, 4])); // Output: 10
+console.log(sumArray([])); // Output: 0
+console.log(sumArray([5])); // Output: 5
 
-function sumArray(arr) {
+function sumArray(arr: number[]) {
   // Your code here
+  if (arr.length <= 0) {
+    //Once there are no numbers left in the array.
+    return 0;
+  }
+  return arr[arr.length - 1] + sumArray(arr.slice(0, arr.length - 1));
+  //Takes the last number in the array and will call sumArray for the next to last item and so on.
+  //The next sumArray will cut the last item in the array using slice()
 }
 
 // 3. Reverse a String
