@@ -68,9 +68,9 @@ console.log(isPalindrome("racecar")); // Output: true
 // console.log(isPalindrome("peep"));    // true
 
 function isPalindrome(str: string): boolean {
-  console.log(str);
   // Your code here
   let middle = Math.ceil(str.length / 2);
+  console.log(str.slice(0, middle - 1) + str.slice(middle, str.length));
   const findPalindrome = (left: number, right: number, string: string) => {
     if (string[left] !== string[right]) {
       return false;
@@ -87,7 +87,7 @@ function isPalindrome(str: string): boolean {
   } else {
     findPalindrome(middle - 1, middle + 1, str);
     return isPalindrome(
-      str.slice(0, middle) + str.slice(middle + 1, str.length)
+      str.slice(0, middle - 1) + str.slice(middle, str.length)
     );
   }
 }
