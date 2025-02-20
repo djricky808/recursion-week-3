@@ -7,9 +7,13 @@
 // console.log(factorial(5)); // Output: 120
 // console.log(factorial(0)); // Output: 1
 
-function factorial(n) {
+function factorial(n: number): number {
   // Your code here
-  return n;
+  if (n <= 1) {
+    return 1;
+  } else {
+    return n * factorial(n - 1);
+  }
 }
 
 console.log(factorial(7));
