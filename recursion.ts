@@ -22,9 +22,9 @@ function factorial(n: number): number {
 // Write a recursive function to calculate the sum of all numbers in an array.
 //
 // Example Test Cases:
-console.log(sumArray([1, 2, 3, 4])); // Output: 10
-console.log(sumArray([])); // Output: 0
-console.log(sumArray([5])); // Output: 5
+// console.log(sumArray([1, 2, 3, 4])); // Output: 10
+// console.log(sumArray([])); // Output: 0
+// console.log(sumArray([5])); // Output: 5
 
 function sumArray(arr: number[]): number {
   // Your code here
@@ -41,16 +41,21 @@ function sumArray(arr: number[]): number {
 // Write a recursive function that reverses a given string.
 //
 // Example Test Cases:
-// console.log(reverseString("hello")); // Output: "olleh"
-// console.log(reverseString("racecar")); // Output: "racecar"
-// console.log(reverseString("abc")); // Output: "cba"
+console.log(reverseString("hello")); // Output: "olleh"
+console.log(reverseString("racecar")); // Output: "racecar"
+console.log(reverseString("abc")); // Output: "cba"
 
-function reverseString(str:string):string {
+function reverseString(str: string): string {
   // Your code here
-  if (str.length <= 0){
-    return '';
+  if (str.length <= 0) {
+    return "";
   }
-  return str[str.length-1] += 
+  return (str.split("")[str.length - 1] += reverseString(
+    str
+      .split("")
+      .slice(0, str.length - 1)
+      .join("")
+  ));
 }
 
 // 4. Check if a String is a Palindrome
