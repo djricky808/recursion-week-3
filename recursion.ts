@@ -26,7 +26,7 @@ console.log(sumArray([1, 2, 3, 4])); // Output: 10
 console.log(sumArray([])); // Output: 0
 console.log(sumArray([5])); // Output: 5
 
-function sumArray(arr: number[]) {
+function sumArray(arr: number[]): number {
   // Your code here
   if (arr.length <= 0) {
     //Once there are no numbers left in the array.
@@ -45,8 +45,12 @@ function sumArray(arr: number[]) {
 // console.log(reverseString("racecar")); // Output: "racecar"
 // console.log(reverseString("abc")); // Output: "cba"
 
-function reverseString(str) {
+function reverseString(str:string):string {
   // Your code here
+  if (str.length <= 0){
+    return '';
+  }
+  return str[str.length-1] += 
 }
 
 // 4. Check if a String is a Palindrome
