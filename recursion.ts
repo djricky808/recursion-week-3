@@ -41,9 +41,9 @@ function sumArray(arr: number[]): number {
 // Write a recursive function that reverses a given string.
 //
 // Example Test Cases:
-console.log(reverseString("hello")); // Output: "olleh"
-console.log(reverseString("racecar")); // Output: "racecar"
-console.log(reverseString("abc")); // Output: "cba"
+// console.log(reverseString("hello")); // Output: "olleh"
+// console.log(reverseString("racecar")); // Output: "racecar"
+// console.log(reverseString("abc")); // Output: "cba"
 
 function reverseString(str: string): string {
   // Your code here
@@ -62,12 +62,34 @@ function reverseString(str: string): string {
 // Write a recursive function to check if a string is a palindrome (reads the same forward and backward).
 //
 // Example Test Cases:
-// console.log(isPalindrome("racecar")); // Output: true
+console.log(isPalindrome("racecar")); // Output: true
 // console.log(isPalindrome("hello"));   // Output: false
 // console.log(isPalindrome("a"));       // Output: true
+// console.log(isPalindrome("peep"));    // true
 
-function isPalindrome(str) {
+function isPalindrome(str: string): boolean {
+  console.log(str);
   // Your code here
+  let middle = Math.ceil(str.length / 2);
+  const findPalindrome = (left: number, right: number, string: string) => {
+    if (string[left] !== string[right]) {
+      return false;
+    }
+    if (left < 0 && right === string.length) {
+      return true;
+    }
+  };
+  if (str.length % 2 === 0) {
+    findPalindrome(middle, middle + 1, str);
+    return isPalindrome(
+      str.slice(0, middle - 1) + str.slice(middle + 1, str.length)
+    );
+  } else {
+    findPalindrome(middle - 1, middle + 1, str);
+    return isPalindrome(
+      str.slice(0, middle) + str.slice(middle + 1, str.length)
+    );
+  }
 }
 
 // 5. Compute the N-th Fibonacci Number
