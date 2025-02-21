@@ -63,31 +63,34 @@ function reverseString(str: string): string {
 //
 // Example Test Cases:
 console.log(isPalindrome("racecar")); // Output: true
-// console.log(isPalindrome("hello"));   // Output: false
-// console.log(isPalindrome("a"));       // Output: true
-// console.log(isPalindrome("peep"));    // true
+console.log(isPalindrome("hello")); // Output: false
+console.log(isPalindrome("a")); // Output: true
+console.log(isPalindrome("peep")); // true
 
 function isPalindrome(str: string): boolean {
   // Your code here
-  let middle = Math.ceil(str.length / 2);
-  console.log(str.slice(0, middle - 1) + str.slice(middle, str.length));
+  if (str.length <= 0) {
+    return true;
+  }
+  let middle = Math.floor(str.length / 2);
+  console.log(str[middle]);
+  console.log(str.slice(0, middle - 1) + str.slice(middle + 1, str.length));
   const findPalindrome = (left: number, right: number, string: string) => {
+    console.log("left", left, str[left]);
+    console.log("right", right, str[right]);
     if (string[left] !== string[right]) {
       return false;
     }
-    if (left < 0 && right === string.length) {
-      return true;
-    }
   };
   if (str.length % 2 === 0) {
-    findPalindrome(middle, middle + 1, str);
+    findPalindrome(middle - 1, middle, str);
     return isPalindrome(
       str.slice(0, middle - 1) + str.slice(middle + 1, str.length)
     );
   } else {
     findPalindrome(middle - 1, middle + 1, str);
     return isPalindrome(
-      str.slice(0, middle - 1) + str.slice(middle, str.length)
+      str.slice(0, middle) + str.slice(middle + 1, str.length)
     );
   }
 }
