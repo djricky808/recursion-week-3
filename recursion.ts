@@ -66,32 +66,29 @@ console.log(isPalindrome("racecar")); // Output: true
 console.log(isPalindrome("hello")); // Output: false
 console.log(isPalindrome("a")); // Output: true
 console.log(isPalindrome("peep")); // true
+console.log(isPalindrome("peephole")); //false
 
 function isPalindrome(str: string): boolean {
   // Your code here
-  if (str.length <= 0) {
-    return true;
+  if (str.length <= 1) {
+    return true; //basecase when string has only 0-1 letters left
   }
   let middle = Math.floor(str.length / 2);
-  console.log(str[middle]);
-  console.log(str.slice(0, middle - 1) + str.slice(middle + 1, str.length));
+  //find the middle of the string
   const findPalindrome = (left: number, right: number, string: string) => {
-    console.log("left", left, str[left]);
-    console.log("right", right, str[right]);
-    if (string[left] !== string[right]) {
-      return false;
-    }
+    return string[left] === string[right];
   };
   if (str.length % 2 === 0) {
-    findPalindrome(middle - 1, middle, str);
-    return isPalindrome(
-      str.slice(0, middle - 1) + str.slice(middle + 1, str.length)
-    );
+    //when the palindrome is even
+    return findPalindrome(middle - 1, middle, str)
+      ? isPalindrome(
+          str.slice(0, middle - 1) + str.slice(middle + 1, str.length)
+        )
+      : false;
   } else {
-    findPalindrome(middle - 1, middle + 1, str);
-    return isPalindrome(
-      str.slice(0, middle) + str.slice(middle + 1, str.length)
-    );
+    return findPalindrome(middle - 1, middle + 1, str)
+      ? isPalindrome(str.slice(0, middle) + str.slice(middle + 1, str.length))
+      : false;
   }
 }
 
