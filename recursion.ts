@@ -135,9 +135,9 @@ function flattenArray(arr) {
 // Write a recursive function that counts how many times a given value appears in an array.
 //
 // Example Test Cases:
-console.log(countOccurrences([1, 2, 3, 4, 2, 2, 5], 2)); // Output: 3
-console.log(countOccurrences([1, 1, 1, 1, 1], 1)); // Output: 5
-console.log(countOccurrences([1, 2, 3, 4, 5], 6)); // Output: 0
+// console.log(countOccurrences([1, 2, 3, 4, 2, 2, 5], 2)); // Output: 3
+// console.log(countOccurrences([1, 1, 1, 1, 1], 1)); // Output: 5
+// console.log(countOccurrences([1, 2, 3, 4, 5], 6)); // Output: 0
 
 function countOccurrences(
   arr: number[],
@@ -158,10 +158,21 @@ function countOccurrences(
 // Write a recursive function that finds and returns the maximum value in an array.
 //
 // Example Test Cases:
-// console.log(findMax([1, 5, 3, 9, 2])); // Output: 9
-// console.log(findMax([7, 7, 7, 7])); // Output: 7
-// console.log(findMax([-1, -2, -3, -4])); // Output: -1
+console.log(findMax([1, 5, 3, 9, 2])); // Output: 9
+console.log(findMax([7, 7, 7, 7])); // Output: 7
+console.log(findMax([-1, -2, -3, -4])); // Output: -1
+console.log(findMax([])); //?
 
-function findMax(arr) {
+function findMax(
+  arr: number[],
+  max: number = Number.NEGATIVE_INFINITY
+): number {
   // Your code here
+  if (arr.length === 0) {
+    return max;
+  }
+  if (arr[arr.length - 1] > max) {
+    max = arr[arr.length - 1];
+  }
+  return findMax(arr.slice(0, arr.length - 1), max);
 }
