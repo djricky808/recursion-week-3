@@ -101,15 +101,16 @@ function isPalindrome(str: string): boolean {
 
 // let fibonacciMemo = {};
 
-// console.log(fibonacci(6)); // Output: 8
+console.log(fibonacci(6)); // Output: 8
 // console.log(fibonacci(0)); // Output: 0
 // console.log(fibonacci(1)); // Output: 1
 
 function fibonacci(
   n: number,
-  fibonacciMemo: { [n: number]: number } = {}
+  fibonacciMemo: { [n: string]: number } = {}
 ): number {
   // Your code here
+  console.log(fibonacciMemo);
   if (fibonacciMemo[n]) {
     return fibonacciMemo[n];
   }
@@ -161,7 +162,7 @@ function countOccurrences(
 console.log(findMax([1, 5, 3, 9, 2])); // Output: 9
 console.log(findMax([7, 7, 7, 7])); // Output: 7
 console.log(findMax([-1, -2, -3, -4])); // Output: -1
-console.log(findMax([])); //?
+console.log(findMax([])); // -Infinity
 
 function findMax(
   arr: number[],
