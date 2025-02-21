@@ -41,7 +41,7 @@ function sumArray(arr: number[]): number {
 // Write a recursive function that reverses a given string.
 //
 // Example Test Cases:
-// console.log(reverseString("hello")); // Output: "olleh"
+console.log(reverseString("hello")); // Output: "olleh"
 // console.log(reverseString("racecar")); // Output: "racecar"
 // console.log(reverseString("abc")); // Output: "cba"
 
@@ -51,10 +51,7 @@ function reverseString(str: string): string {
     return "";
   }
   return (str.split("")[str.length - 1] += reverseString(
-    str
-      .split("")
-      .slice(0, str.length - 1)
-      .join("")
+    str.slice(0, str.length - 1)
   ));
 }
 
@@ -101,7 +98,7 @@ function isPalindrome(str: string): boolean {
 
 // let fibonacciMemo = {};
 
-console.log(fibonacci(6)); // Output: 8
+// console.log(fibonacci(6)); // Output: 8
 // console.log(fibonacci(0)); // Output: 0
 // console.log(fibonacci(1)); // Output: 1
 
@@ -128,8 +125,12 @@ function fibonacci(
 // console.log(flattenArray([1, [2, [3, [4, [5]]]]])); // Output: [1, 2, 3, 4, 5]
 // console.log(flattenArray([])); // Output: []
 
-function flattenArray(arr) {
+function flattenArray(arr: any[], flattened: any[] = []): any[] {
   // Your code here
+  if (arr.length === 0) {
+    return flattened;
+  }
+  if (Array.isArray(arr[arr.length - 1]));
 }
 
 // 7. Count the Number of Occurrences of a Value in an Array
@@ -159,10 +160,10 @@ function countOccurrences(
 // Write a recursive function that finds and returns the maximum value in an array.
 //
 // Example Test Cases:
-console.log(findMax([1, 5, 3, 9, 2])); // Output: 9
-console.log(findMax([7, 7, 7, 7])); // Output: 7
-console.log(findMax([-1, -2, -3, -4])); // Output: -1
-console.log(findMax([])); // -Infinity
+// console.log(findMax([1, 5, 3, 9, 2])); // Output: 9
+// console.log(findMax([7, 7, 7, 7])); // Output: 7
+// console.log(findMax([-1, -2, -3, -4])); // Output: -1
+// console.log(findMax([])); // -Infinity
 
 function findMax(
   arr: number[],
