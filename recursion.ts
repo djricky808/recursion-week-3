@@ -99,12 +99,16 @@ function isPalindrome(str: string): boolean {
 //
 // Example Test Cases:
 
-let fibonacciMemo = {};
+// let fibonacciMemo = {};
+
 console.log(fibonacci(6)); // Output: 8
 console.log(fibonacci(0)); // Output: 0
 console.log(fibonacci(1)); // Output: 1
 
-function fibonacci(n) {
+function fibonacci(
+  n: number,
+  fibonacciMemo: { [n: number]: number } = {}
+): number {
   // Your code here
   if (fibonacciMemo[n]) {
     return fibonacciMemo[n];
