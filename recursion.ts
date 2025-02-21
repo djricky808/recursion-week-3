@@ -122,15 +122,27 @@ function fibonacci(
 //
 // Example Test Cases:
 // console.log(flattenArray([1, [2, [3, 4], 5], 6])); // Output: [1, 2, 3, 4, 5, 6]
-// console.log(flattenArray([1, [2, [3, [4, [5]]]]])); // Output: [1, 2, 3, 4, 5]
+console.log(flattenArray([1, [2, [3, [4, [5]]]]])); // Output: [1, 2, 3, 4, 5]
 // console.log(flattenArray([])); // Output: []
 
 function flattenArray(arr: any[], flattened: any[] = []): any[] {
   // Your code here
+  console.log("before", arr);
   if (arr.length === 0) {
-    return flattened;
+    console.log("Done!");
+    return flattened.reverse();
   }
-  if (Array.isArray(arr[arr.length - 1]));
+  if (Array.isArray(arr[arr.length - 1])) {
+    console.log("i is an array");
+    console.log("sliced", arr.slice(0, arr.length - 1));
+    return flattenArray(
+      arr.slice(0, arr.length - 1).concat(arr[arr.length - 1].flat()),
+      flattened
+    );
+    console.log("After", arr);
+  }
+  flattened.push(arr[arr.length - 1]);
+  return flattenArray(arr.slice(0, arr.length - 1), flattened);
 }
 
 // 7. Count the Number of Occurrences of a Value in an Array
