@@ -62,11 +62,11 @@ function reverseString(str: string): string {
 // Write a recursive function to check if a string is a palindrome (reads the same forward and backward).
 //
 // Example Test Cases:
-console.log(isPalindrome("racecar")); // Output: true
-console.log(isPalindrome("hello")); // Output: false
-console.log(isPalindrome("a")); // Output: true
-console.log(isPalindrome("peep")); // true
-console.log(isPalindrome("peephole")); //false
+// console.log(isPalindrome("racecar")); // Output: true
+// console.log(isPalindrome("hello")); // Output: false
+// console.log(isPalindrome("a")); // Output: true
+// console.log(isPalindrome("peep")); // true
+// console.log(isPalindrome("peephole")); //false
 
 function isPalindrome(str: string): boolean {
   // Your code here
@@ -98,12 +98,21 @@ function isPalindrome(str: string): boolean {
 // F(0) = 0, F(1) = 1, F(n) = F(n-1) + F(n-2)
 //
 // Example Test Cases:
-// console.log(fibonacci(6)); // Output: 8
-// console.log(fibonacci(0)); // Output: 0
-// console.log(fibonacci(1)); // Output: 1
+
+let fibonacciMemo = {};
+console.log(fibonacci(6)); // Output: 8
+console.log(fibonacci(0)); // Output: 0
+console.log(fibonacci(1)); // Output: 1
 
 function fibonacci(n) {
   // Your code here
+  if (fibonacciMemo[n]) {
+    return fibonacciMemo[n];
+  }
+  if (n <= 1) {
+    return (fibonacciMemo[n] = n);
+  }
+  return fibonacci(n - 1) + fibonacci(n - 2);
 }
 
 // 6. Flatten a Nested Array
