@@ -101,9 +101,9 @@ function isPalindrome(str: string): boolean {
 
 // let fibonacciMemo = {};
 
-console.log(fibonacci(6)); // Output: 8
-console.log(fibonacci(0)); // Output: 0
-console.log(fibonacci(1)); // Output: 1
+// console.log(fibonacci(6)); // Output: 8
+// console.log(fibonacci(0)); // Output: 0
+// console.log(fibonacci(1)); // Output: 1
 
 function fibonacci(
   n: number,
@@ -135,12 +135,23 @@ function flattenArray(arr) {
 // Write a recursive function that counts how many times a given value appears in an array.
 //
 // Example Test Cases:
-// console.log(countOccurrences([1, 2, 3, 4, 2, 2, 5], 2)); // Output: 3
-// console.log(countOccurrences([1, 1, 1, 1, 1], 1)); // Output: 5
-// console.log(countOccurrences([1, 2, 3, 4, 5], 6)); // Output: 0
+console.log(countOccurrences([1, 2, 3, 4, 2, 2, 5], 2)); // Output: 3
+console.log(countOccurrences([1, 1, 1, 1, 1], 1)); // Output: 5
+console.log(countOccurrences([1, 2, 3, 4, 5], 6)); // Output: 0
 
-function countOccurrences(arr, value) {
+function countOccurrences(
+  arr: number[],
+  value: number,
+  count: number = 0
+): number {
   // Your code here
+  if (arr.length === 0) {
+    return count;
+  }
+  if (arr[arr.length - 1] === value) {
+    count += 1;
+  }
+  return countOccurrences(arr.slice(0, arr.length - 1), value, count);
 }
 
 // 8. Find the Maximum Number in an Array
