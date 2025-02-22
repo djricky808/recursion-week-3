@@ -18,6 +18,7 @@ if we were to write this using for loops...
 loop through the third number in the trio for any possibilities
 Then repeat while iterating through the second number in the trio
 In move the i index up 1.
+!Extra trio found in test sample, because the same 3 numbers are in a different combination. 
 */
 
 function loopThreeSum(arr: number[]): number[][] | null[] {
@@ -28,7 +29,21 @@ function loopThreeSum(arr: number[]): number[][] | null[] {
       //j cannot be the last number
       for (let k = j + 1; k < arr.length; k++) {
         if (arr[i] + arr[j] + arr[k] === 0) {
-          tripletSumToZero.push([arr[i], arr[j], arr[k]]);
+          let doesTrioExistInTripletToZero = false;
+          //checks to see if the trio exists in a different variation.
+          tripletSumToZero.forEach((trio) => {
+            if (
+              trio.every((number) => [arr[i], arr[j], arr[k]].includes(number))
+            ) {
+              doesTrioExistInTripletToZero = true;
+            } else {
+              console.log(
+                `Trio ${[arr[i], arr[j], arr[k]]} and ${trio} are a mismatch!`
+              );
+            }
+          });
+          !doesTrioExistInTripletToZero &&
+            tripletSumToZero.push([arr[i], arr[j], arr[k]]);
         }
       }
     }
