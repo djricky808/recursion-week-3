@@ -72,7 +72,8 @@ function threeSum(
   if (arr.length === 0) {
     return tripletSumToZero;
   }
-  if (arr[i] + arr[j] + arr[k] === 0) {
+  if (i > 0 && j > 0 && k > 0 && arr[i] + arr[j] + arr[k] === 0) {
+    console.log("Check if it exists already");
     let doesTrioExistInTripletToZero = false;
     tripletSumToZero.forEach((trio: number[]) => {
       if (trio.every((number) => [arr[i], arr[j], arr[k]].includes(number))) {
@@ -90,9 +91,9 @@ function threeSum(
     console.log("Reduce i by 1");
     return threeSum(
       arr.slice(0, arr.length - 1),
-      arr.length - 1,
       arr.length - 2,
       arr.length - 3,
+      arr.length - 4,
       tripletSumToZero
     );
   } else if (k < 0) {
