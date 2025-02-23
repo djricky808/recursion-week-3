@@ -3,7 +3,7 @@
 // You must return an array of arrays where each subarray contains a valid triplet.
 //
 // Example Test Cases:
-// console.log(threeSum([-1, 0, 1, 2, -1, -4]));
+console.log(threeSum([-1, 0, 1, 2, -1, -4]));
 // Expected Output: [[-1, -1, 2], [-1, 0, 1]]
 // console.log(threeSum([0, 1, 1])); // Output: []
 // console.log(threeSum([0, 0, 0])); // Output: [[0, 0, 0]]
@@ -21,7 +21,7 @@ In move the i index up 1.
 !Extra trio found in test sample, because the same 3 numbers are in a different combination. 
 */
 
-function loopThreeSum(arr: number[]): number[][] | null[] {
+function loopThreeSum(arr: number[]): number[][] | number[] {
   let tripletSumToZero: number[][] = [];
   for (let i = 0; i < arr.length - 2; i++) {
     //omit the last two elements in the array since i would never be the 2nd or 3rd number in the triplet
@@ -51,11 +51,57 @@ function loopThreeSum(arr: number[]): number[][] | null[] {
   return tripletSumToZero;
 }
 
-console.log(loopThreeSum([-1, 0, 1, 2, -1, -4]));
+// console.log(loopThreeSum([-1, 0, 1, 2, -1, -4]));
 // Expected Output: [[-1, -1, 2], [-1, 0, 1]]
 
-function threeSum(arr) {
+//How to convert to recursive function:
+// Start from the end instead of the beginnng,
+// Nest 3 recursive functions with i, j, and k.
+// Move k and j until the whole array is passed, then slice i.
+// If the 3 numbers add to zero check if the triplet already exists in the array.
+
+function threeSum(
+  arr: number[],
+  i: number = arr.length,
+  j: number = arr.length - 1,
+  k: number = arr.length - 2,
+  tripletSumToZero: number[][] = []
+): number[][] | number[] {
   // Your code here
+  console.log(i, j, k);
+  if (arr.length === 0) {
+    return tripletSumToZero;
+  }
+  if (arr[i] + arr[j] + arr[k] === 0) {
+    let doesTrioExistInTripletToZero = false;
+    tripletSumToZero.forEach((trio: number[]) => {
+      if (trio.every((number) => [arr[i], arr[j], arr[k]].includes(number))) {
+        doesTrioExistInTripletToZero = true;
+      } else {
+        console.log(
+          `Trio ${[arr[i], arr[j], arr[k]]} and ${trio} are a mismatch!`
+        );
+      }
+    });
+    !doesTrioExistInTripletToZero &&
+      tripletSumToZero.push([arr[i], arr[j], arr[k]]);
+  }
+  if (j < 0 && k < 0) {
+    console.log("Reduce i by 1");
+    return threeSum(
+      arr.slice(0, arr.length - 1),
+      arr.length - 1,
+      arr.length - 2,
+      arr.length - 3,
+      tripletSumToZero
+    );
+  } else if (k < 0) {
+    console.log("Reduce j by 1");
+    return threeSum(arr, i, j - 1, j - 2, tripletSumToZero);
+  } else {
+    console.log("Reduce k by 1");
+    return threeSum(arr, i, j, k - 1, tripletSumToZero);
+  }
 }
 
 // 10. Rock, Paper, Scissors (Generate All Possible Outcomes)
