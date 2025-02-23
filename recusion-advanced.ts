@@ -68,11 +68,11 @@ function threeSum(
   tripletSumToZero: number[][] = []
 ): number[][] | number[] {
   // Your code here
-  console.log(arr[i], arr[j], arr[k]);
-  if (arr.length === 0) {
+  console.log(arr[i], arr[j], arr[k], `=${arr[i] + arr[j] + arr[k]}`);
+  if (arr.length <= 3) {
     return tripletSumToZero;
   }
-  if (i > 0 && j > 0 && k > 0 && arr[i] + arr[j] + arr[k] === 0) {
+  if (arr[i] + arr[j] + arr[k] === 0) {
     console.log("Check if it exists already");
     let doesTrioExistInTripletToZero = false;
     tripletSumToZero.forEach((trio: number[]) => {
@@ -87,7 +87,7 @@ function threeSum(
     !doesTrioExistInTripletToZero &&
       tripletSumToZero.push([arr[i], arr[j], arr[k]]);
   }
-  if (j < 0 && k < 0) {
+  if (j <= 1) {
     console.log("Reduce i by 1");
     return threeSum(
       arr.slice(0, arr.length - 1),
@@ -96,7 +96,7 @@ function threeSum(
       arr.length - 4,
       tripletSumToZero
     );
-  } else if (k < 0) {
+  } else if (k <= 0) {
     console.log("Reduce j by 1");
     return threeSum(arr, i, j - 1, j - 2, tripletSumToZero);
   } else {
