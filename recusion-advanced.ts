@@ -62,13 +62,13 @@ function loopThreeSum(arr: number[]): number[][] | number[] {
 
 function threeSum(
   arr: number[],
-  i: number = arr.length,
-  j: number = arr.length - 1,
-  k: number = arr.length - 2,
+  i: number = arr.length - 1,
+  j: number = arr.length - 2,
+  k: number = arr.length - 3,
   tripletSumToZero: number[][] = []
 ): number[][] | number[] {
   // Your code here
-  console.log(i, j, k);
+  console.log(arr[i], arr[j], arr[k]);
   if (arr.length === 0) {
     return tripletSumToZero;
   }
