@@ -3,8 +3,8 @@
 // You must return an array of arrays where each subarray contains a valid triplet.
 //
 // Example Test Cases:
-console.log(threeSum([-1, 0, 1, 2, -1, -4]));
-// Expected Output: [[-1, -1, 2], [-1, 0, 1]]
+// console.log(threeSum([-1, 0, 1, 2, -1, -4]));
+// // Expected Output: [[-1, -1, 2], [-1, 0, 1]]
 // console.log(threeSum([0, 1, 1])); // Output: []
 // console.log(threeSum([0, 0, 0])); // Output: [[0, 0, 0]]
 
@@ -111,7 +111,7 @@ function threeSum(
 // The function should return an array of arrays, where each inner array represents a sequence of moves.
 //
 // Example Test Cases:
-// console.log(rockPaperScissors(2));
+console.log(rockPaperScissors(2));
 // Expected Output: [
 //   ["rock", "rock"], ["rock", "paper"], ["rock", "scissors"],
 //   ["paper", "rock"], ["paper", "paper"], ["paper", "scissors"],
@@ -120,6 +120,20 @@ function threeSum(
 // console.log(rockPaperScissors(1));
 // Expected Output: [["rock"], ["paper"], ["scissors"]]
 
-function rockPaperScissors(n) {
+/*Strategy
+The number of solutions is 3 to the nth power (number of rounds)
+1: 3  2: 9  3:27  4:81
+Last iteration will change rock / paper /scissors, each time it repeats the next round up will change, and so on.
+Create arrays with empty strings,
+Number of arrays is 3 to the nth power
+Length is n
+*/
+
+function rockPaperScissors(
+  n: number,
+  arr = new Array(Math.pow(3, n)).fill(new Array(n).fill(""))
+): string[] {
   // Your code here
+  const choices = ["rock", "paper", "scissors"];
+  return arr;
 }
