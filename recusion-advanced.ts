@@ -3,10 +3,10 @@
 // You must return an array of arrays where each subarray contains a valid triplet.
 //
 // Example Test Cases:
-// console.log(threeSum([-1, 0, 1, 2, -1, -4]));
-// // Expected Output: [[-1, -1, 2], [-1, 0, 1]]
-// console.log(threeSum([0, 1, 1])); // Output: []
-// console.log(threeSum([0, 0, 0])); // Output: [[0, 0, 0]]
+console.log(threeSum([-1, 0, 1, 2, -1, -4]));
+// Expected Output: [[-1, -1, 2], [-1, 0, 1]]
+console.log(threeSum([0, 1, 1])); // Output: []
+console.log(threeSum([0, 0, 0])); // Output: [[0, 0, 0]]
 
 /* Strategy:
 [1,2,3,4,5]
@@ -68,27 +68,20 @@ function threeSum(
   tripletSumToZero: number[][] = []
 ): number[][] | number[] {
   // Your code here
-  console.log(arr[i], arr[j], arr[k], `=${arr[i] + arr[j] + arr[k]}`);
-  if (arr.length <= 3) {
+  if (arr.length < 3) {
     return tripletSumToZero;
   }
   if (arr[i] + arr[j] + arr[k] === 0) {
-    console.log("Check if it exists already");
     let doesTrioExistInTripletToZero = false;
     tripletSumToZero.forEach((trio: number[]) => {
       if (trio.every((number) => [arr[i], arr[j], arr[k]].includes(number))) {
         doesTrioExistInTripletToZero = true;
-      } else {
-        console.log(
-          `Trio ${[arr[i], arr[j], arr[k]]} and ${trio} are a mismatch!`
-        );
       }
     });
     !doesTrioExistInTripletToZero &&
       tripletSumToZero.push([arr[i], arr[j], arr[k]]);
   }
   if (j <= 1) {
-    console.log("Reduce i by 1");
     return threeSum(
       arr.slice(0, arr.length - 1),
       arr.length - 2,
@@ -97,10 +90,8 @@ function threeSum(
       tripletSumToZero
     );
   } else if (k <= 0) {
-    console.log("Reduce j by 1");
     return threeSum(arr, i, j - 1, j - 2, tripletSumToZero);
   } else {
-    console.log("Reduce k by 1");
     return threeSum(arr, i, j, k - 1, tripletSumToZero);
   }
 }
