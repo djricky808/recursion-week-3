@@ -102,7 +102,7 @@ function threeSum(
 // The function should return an array of arrays, where each inner array represents a sequence of moves.
 //
 // Example Test Cases:
-console.log(rockPaperScissors(2));
+// console.log(rockPaperScissors(2));
 // Expected Output: [
 //   ["rock", "rock"], ["rock", "paper"], ["rock", "scissors"],
 //   ["paper", "rock"], ["paper", "paper"], ["paper", "scissors"],
@@ -111,20 +111,25 @@ console.log(rockPaperScissors(2));
 // console.log(rockPaperScissors(1));
 // Expected Output: [["rock"], ["paper"], ["scissors"]]
 
-/*Strategy
-The number of solutions is 3 to the nth power (number of rounds)
-1: 3  2: 9  3:27  4:81
-Last iteration will change rock / paper /scissors, each time it repeats the next round up will change, and so on.
-Create arrays with empty strings,
-Number of arrays is 3 to the nth power
-Length is n
-*/
-
-function rockPaperScissors(
-  n: number,
-  arr = new Array(Math.pow(3, n)).fill(new Array(n).fill(""))
-): string[] {
+function rockPaperScissors(n: number): string[][] {
   // Your code here
-  const choices = ["rock", "paper", "scissors"];
-  return arr;
+  const possibilities = [];
+  const options = ["rock", "paper", "scissors"];
+
+  function createOutcome(currentRound: number, outcome: string[]): void {
+    if (currentRound === 0) {
+      possibilities.push(outcome);
+      return;
+    }
+
+    for (let i = 0; i < options.length; i++) {
+      console.log(outcome);
+      console.log(i, options[i]);
+      createOutcome(currentRound - 1, [...outcome, options[i]]);
+    }
+  }
+  createOutcome(n, []);
+  return possibilities;
 }
+
+console.log(rockPaperScissors(3));
