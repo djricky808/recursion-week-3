@@ -3,10 +3,10 @@
 // You must return an array of arrays where each subarray contains a valid triplet.
 //
 // Example Test Cases:
-console.log(threeSum([-1, 0, 1, 2, -1, -4]));
-// Expected Output: [[-1, -1, 2], [-1, 0, 1]]
-console.log(threeSum([0, 1, 1])); // Output: []
-console.log(threeSum([0, 0, 0])); // Output: [[0, 0, 0]]
+// console.log(threeSum([-1, 0, 1, 2, -1, -4]));
+// // Expected Output: [[-1, -1, 2], [-1, 0, 1]]
+// console.log(threeSum([0, 1, 1])); // Output: []
+// console.log(threeSum([0, 0, 0])); // Output: [[0, 0, 0]]
 
 /* Strategy:
 [1,2,3,4,5]
@@ -118,13 +118,16 @@ function rockPaperScissors(n: number): string[][] {
 
   function createOutcome(currentRound: number, outcome: string[]): void {
     if (currentRound === 0) {
+      console.log("Pushing outcome");
+      console.log(outcome);
       possibilities.push(outcome);
       return;
     }
 
     for (let i = 0; i < options.length; i++) {
-      console.log(outcome);
+      console.log("current round", currentRound);
       console.log(i, options[i]);
+      console.log(outcome);
       createOutcome(currentRound - 1, [...outcome, options[i]]);
     }
   }
