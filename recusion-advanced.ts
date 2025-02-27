@@ -100,7 +100,7 @@ function threeSum(
 // Write a recursive function that generates all possible outcomes of a game of Rock, Paper, Scissors for n rounds.
 // Each round has three choices: "rock", "paper", or "scissors".
 // The function should return an array of arrays, where each inner array represents a sequence of moves.
-//
+//   
 // Example Test Cases:
 // console.log(rockPaperScissors(2));
 // Expected Output: [
@@ -113,7 +113,7 @@ function threeSum(
 
 function rockPaperScissors(n: number): string[][] {
   // Your code here
-  const possibilities = [];
+  const possibilities: string[][] = [];
   const options = ["rock", "paper", "scissors"];
 
   function createOutcome(currentRound: number, outcome: string[]): void {
